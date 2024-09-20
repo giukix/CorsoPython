@@ -55,3 +55,56 @@ a = 5
 b = 10
 
 print(do_twice(add, a, b))
+
+#outer function
+def outer_function():
+    print("Hello from the outer function")
+
+    #inner function
+    def inner_function():
+        print("Hello from the inner function")
+
+    inner_function()
+
+outer_function()
+
+###### DECORATOR
+def uppercase(func):
+    def wrapper():
+        orig_message = func()
+        modified_message = orig_message.upper()
+        return modified_message
+    return wrapper
+
+@uppercase
+def greet():
+    return "Welcome!"
+
+# Using the decorated function
+print(greet())
+
+########## args e kwargs ###########
+def total(*args):
+  result = 0
+  for arg in args:
+    result += arg
+  return result
+
+print(total(1, 2, 3, 4, 5))
+print(total(1, 2, 3, 4, 5, 6, 7))
+print(total(1, 2, 3))
+
+def show_items(category, *items):
+  print("Category: " + category)
+  for item in items:
+    print(item)
+
+show_items("Electronics", "Laptop", "Smartphone", "Tablet")
+
+##### **kwargs is a dictionary
+def display_info(**kwargs):
+  #kwargs.items() returns the key:valie pairs
+  for key, value in kwargs.items():
+    print(key, ":", value)
+
+display_info(name="Alice", age=30, city="New York")
