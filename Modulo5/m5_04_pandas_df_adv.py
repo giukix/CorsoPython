@@ -117,3 +117,19 @@ print(missing_data)
 df_cleaned = df.dropna()
 print("df_cleaned")
 print(df_cleaned)
+
+# Sostituisce i valori mancanti con 0
+df_filled = df.fillna(0)
+print(df_filled)
+
+# Riempie i valori mancanti con il valore precedente (metodo forward fill)
+df_filled = df.fillna(method='ffill')
+print(df_filled)
+
+# Riempie i valori mancanti con il valore successivo (metodo backward fill)
+df_filled = df.fillna(method='bfill')
+print(df_filled)
+
+# Sostituisce i valori mancanti nella colonna 'A' con la media
+df['A'] = df['A'].fillna(df['A'].mean())
+print(df)
