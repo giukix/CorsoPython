@@ -20,6 +20,17 @@ try:
     result = cursor.fetchall()
     for myrow in result:
         print(myrow)
+
+    # Query per inserire una nuova riga nella tabella
+    sql_insert = "INSERT INTO TEST_TABLE (CHIAVE, DESCRIZIONE) VALUES (%s, %s)"
+    val_insert = ("NEW_KEY", "NEW_DESCRIPTION")
+
+    cursor.execute(sql_insert, val_insert)
+
+    connection.commit()
+
+    print(cursor.rowcount, "record inserito.")
+
 except mysql.connector.Error as error:
     print(error)
 finally:
